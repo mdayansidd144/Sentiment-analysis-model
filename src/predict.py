@@ -10,10 +10,11 @@ def predict_sentiment(text):
     domain = detect_domain(text)
     tokens = [word_index.get(w,2)for w in text.lower().split()]
     padded = pad_sequences([tokens],maxlen=150)
-    score = model.predict(padded[0][0])
+    prediction = model.predict(padded)
+    score = prediction.item()
 
     return {
-        "domain": domain,
+        # "domain": domain,
         "sentiment":"positive" if score>0.5 else"negative",
         "confidence":round(score,2)
 
