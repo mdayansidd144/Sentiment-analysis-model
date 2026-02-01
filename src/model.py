@@ -1,13 +1,13 @@
 from torch import dropout
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Embedding,conv1D,GlobalMaxPooling1D,Dense
+from tensorflow.keras.layers import Embedding,Conv1D,GlobalMaxPooling1D,Dense,Dropout
 def build_model():
     model =Sequential([
         Embedding(10000,100,input_length=150),
-        conv1D(128,5,activation='relu'),
+        Conv1D(128,5,activation='relu'),
         GlobalMaxPooling1D(),
         Dense(64,activation='relu'),
-        dropout(0.5),
+        Dropout(0.5),
         Dense(1,activation='sigmoid')
     ])
     model.compile(
