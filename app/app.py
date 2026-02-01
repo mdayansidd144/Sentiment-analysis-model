@@ -8,6 +8,4 @@ text = st.text_area("Enter your text here:")
 
 if st.button("Analyze Sentiment"):
     result = predict_sentiment(text)
-    st.write("Domain:",result["domain"])
-    st.write("Sentiment:",result["Sentiment"])
-    st.write("Confidence:",result["confidence"])
+    st.json(result)
