@@ -1,5 +1,5 @@
 from src.predict import predict_sentiment
-def analyze_reviews(reviews):
+def analyze_public_opinion(texts):
     summary = {
         "very poor": 0,
         "poor": 0,
@@ -9,16 +9,13 @@ def analyze_reviews(reviews):
         "great": 0,
         "awesome": 0
     }
-
     timeline = []
-
-    for review in reviews:
-        result = predict_sentiment(review)
+#  ye hamare saare public opinions ko classify krenga
+    for t in texts:
+        result = predict_sentiment(t)
         label = result["sentiment"]
         summary[label] += 1
         timeline.append(result["confidence"])
-
     total = sum(summary.values()) or 1
     percentages = {k: round(v / total * 100, 2) for k, v in summary.items()}
-
     return percentages, timeline
