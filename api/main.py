@@ -16,13 +16,10 @@ app = FastAPI(
 )
 class TextRequest(BaseModel):
     text: str
-
 class MovieRequest(BaseModel):
     movie_name: str
-
 class TopicRequest(BaseModel):
     topic: str
-
 class YouTubeRequest(BaseModel):
     video_id: str   # ✅ NEW
 @app.get("/")

@@ -1,19 +1,25 @@
 import pandas as pd
 import os
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DATASETS = {
-    "Social Media": "social_media_opinions.csv",
-    "Geopolitics": "geopolitics_opinions.csv",
-    "Technology": "technology_reviews.csv"
-}
-def load_public_opinions(topic, limit=300):
-    if topic not in DATASETS:
-        return []
-    path = os.path.join(BASE_DIR, "data", DATASETS[topic])
-    if not os.path.exists(path):
-        return []
-    df = pd.read_csv(path)
+from src.news_fetcher import fetch_news_texts
 
-    if "text" not in df.columns:
+TOPIC_QUERY_MAP = {
+    "Social Media": "social media public opinion",
+    "Geopolitics": "global geopolitics international relations",
+    "Technology": "technology innovation AI",
+    "Sports": "sports fans reactions"
+}
+
+def load_public_opinions(topic, limit=100):
+    topic = topic.strip().title()
+
+    query = TOPIC_QUERY_MAP.get(topic)
+    if not query:
+        print("❌ Topic not mapped:", topic)
         return []
-    return df["text"].dropna().head(limit).tolist()
+
+    print("🟢 Fetching public opinion for:", query)
+
+    texts = fetch_news_texts(query, limit=limit)
+
+    print("🟢 Texts fetched:", len(texts))
+    return texts

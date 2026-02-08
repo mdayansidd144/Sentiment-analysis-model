@@ -20,13 +20,63 @@ st.set_page_config(
 )
 st.markdown("""
 <style>
-.title {text-align: center; font-size: 40px; font-weight: bold;}
-.subtitle {text-align: center; color: #9ca3af;}
+.stApp {
+    background: radial-gradient(circle at top left, #0f172a, #020617);
+    color: #e5e7eb;
+}
+.title {
+    text-align: center;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #38bdf8, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
 .card {
-    padding: 18px;
-    border-radius: 12px;
-    background-color: #0f172a;
-    margin-bottom: 15px;
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    margin-bottom: 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+}
+.stButton>button {
+    width: 100%;
+    border-radius: 14px;
+    padding: 10px 16px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #22c55e, #38bdf8);
+    color: black;
+    border: none;
+    transition: all 0.25s ease;
+}
+.stButton>button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 18px rgba(56,189,248,0.6);
+}
+textarea, input {
+    border-radius: 14px !important;
+}
+button[data-baseweb="tab"] {
+    font-size: 15px;
+    padding: 10px;
+    transition: color 0.2s ease;
+}
+button[data-baseweb="tab"]:hover {
+    color: #38bdf8;
 }
 </style>
 """, unsafe_allow_html=True)
