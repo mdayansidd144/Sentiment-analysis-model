@@ -6,3 +6,9 @@ scikit-learn
 tensorflow
 requests
 dotenv
+torch
+keras
+googleapiclient.discovery
+Fastapi
+ pydantic 
+
