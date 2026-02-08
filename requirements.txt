@@ -10,4 +10,4 @@ torch
 keras
 Fastapi
  pydantic 
-
+google-api-python-client
